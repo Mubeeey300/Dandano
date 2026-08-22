@@ -26,15 +26,12 @@ themeToggle.addEventListener("click", () => {
 
     document.body.classList.toggle("dark-mode");
 
-
     const isDark =
         document.body.classList.contains("dark-mode");
 
-
     if (isDark) {
 
-        themeIcon.className =
-            "bi bi-sun-fill";
+        themeIcon.className = "bi bi-sun-fill";
 
         localStorage.setItem(
             "theme",
@@ -43,8 +40,7 @@ themeToggle.addEventListener("click", () => {
 
     } else {
 
-        themeIcon.className =
-            "bi bi-moon-fill";
+        themeIcon.className = "bi bi-moon-fill";
 
         localStorage.setItem(
             "theme",
@@ -61,28 +57,60 @@ themeToggle.addEventListener("click", () => {
 ========================================================= */
 
 /*
-   Add the WhatsApp numbers of everyone
-   who should receive customer orders.
-
    IMPORTANT:
-   Use the international format without +
-   or spaces.
+
+   Add ONLY real WhatsApp numbers here.
+
+   Use international format:
+   - No +
+   - No spaces
+   - No brackets
 
    Example:
-   Nigeria: 2347035850506
+   2348032934663
+
+   DO NOT put:
+   08032934663
+   +2348032934663
+   234XXXXXXXXXX
 */
 
 const WHATSAPP_NUMBERS = [
 
-    // "2347035850506",
+    "2348032934663"
 
-    "2348032934663",
+    // Add more REAL numbers below:
 
-    "234XXXXXXXXXX",
-
-    "234XXXXXXXXXX"
+    // "234XXXXXXXXXX",
+    // "234XXXXXXXXXX",
+    // "234XXXXXXXXXX"
 
 ];
+
+
+/* =========================================================
+   CLEAN WHATSAPP NUMBERS
+========================================================= */
+
+/*
+   This automatically removes:
+   - Empty numbers
+   - Placeholder numbers
+   - Spaces
+   - +
+*/
+
+const VALID_WHATSAPP_NUMBERS =
+    WHATSAPP_NUMBERS
+        .map(number =>
+            String(number)
+                .replace(/\s+/g, "")
+                .replace(/\+/g, "")
+        )
+        .filter(number =>
+            number.length >= 10 &&
+            !number.includes("X")
+        );
 
 
 /* =========================================================
@@ -136,7 +164,8 @@ let cart = [];
 
 function formatMoney(amount) {
 
-    return "₦" + amount.toLocaleString("en-NG");
+    return "₦" +
+        amount.toLocaleString("en-NG");
 
 }
 
@@ -392,7 +421,6 @@ orderItems.addEventListener("click", event => {
 
         cart[index].quantity--;
 
-
         if (cart[index].quantity <= 0) {
 
             cart.splice(index, 1);
@@ -550,6 +578,21 @@ whatsappOrder.addEventListener(
 
 
         /* ================================================
+           CHECK WHATSAPP NUMBERS
+        ================================================ */
+
+        if (VALID_WHATSAPP_NUMBERS.length === 0) {
+
+            alert(
+                "No valid WhatsApp number has been configured."
+            );
+
+            return;
+
+        }
+
+
+        /* ================================================
            CREATE ORDER MESSAGE
         ================================================ */
 
@@ -602,20 +645,15 @@ whatsappOrder.addEventListener(
 
 
         /* ================================================
-           SEND TO ALL WHATSAPP NUMBERS
+           SEND TO ALL VALID WHATSAPP NUMBERS
         ================================================ */
 
-        WHATSAPP_NUMBERS.forEach(
+        VALID_WHATSAPP_NUMBERS.forEach(
             (number, index) => {
 
                 const whatsappURL =
                     `https://wa.me/${number}?text=${encodedMessage}`;
 
-
-                /*
-                   Small delay between each tab
-                   to reduce browser popup blocking.
-                */
 
                 setTimeout(() => {
 
@@ -624,10 +662,21 @@ whatsappOrder.addEventListener(
                         "_blank"
                     );
 
-                }, index * 700);
+                }, index * 1000);
 
             }
         );
+
+
+        /* ================================================
+           CLOSE ORDER DRAWER
+        ================================================ */
+
+        setTimeout(() => {
+
+            closeOrderDrawer();
+
+        }, 500);
 
     }
 );
