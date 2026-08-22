@@ -1999,10 +1999,9 @@ button,
 
 
 /* =========================================================
-   FINAL RESPONSIVE HEADER FIX
+   FINAL MOBILE HEADER
 ========================================================= */
 
-/* TABLET */
 @media (max-width: 900px) {
 
     .header-inner {
@@ -2010,86 +2009,139 @@ button,
         gap: 12px;
     }
 
+    /* LOGO */
     .logo {
-        flex-shrink: 1;
+        flex: 1;
         min-width: 0;
+        font-size: 21px;
     }
 
-    .logo > span:last-child {
-        white-space: nowrap;
+    .logo-icon {
+        flex-shrink: 0;
     }
 
+    /* HEADER ACTIONS */
     .header-actions {
-        margin-left: auto;
         display: flex;
         align-items: center;
+        justify-content: flex-end;
+
         gap: 8px;
+
+        margin-left: auto;
+
         flex-shrink: 0;
     }
 
+    /* DARK/LIGHT BUTTON */
     .theme-toggle {
-        width: 42px;
-        height: 42px;
+        width: 44px;
+        height: 44px;
+
+        min-width: 44px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
         flex-shrink: 0;
     }
 
+    /* ORDER BUTTON */
     .order-button {
-        min-height: 42px;
+        min-width: 95px;
+        height: 44px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 7px;
+
         padding: 0 12px;
+
         flex-shrink: 0;
     }
 
-    .menu-toggle {
-        display: flex !important;
+    .order-button span {
+        display: inline;
+        font-size: 13px;
+    }
 
-        width: 42px;
-        height: 42px;
+    .order-button i {
+        font-size: 18px;
+    }
+
+    /* HAMBURGER */
+    .menu-toggle {
+        width: 44px !important;
+        height: 44px !important;
+
+        min-width: 44px;
+
+        display: flex !important;
 
         align-items: center;
         justify-content: center;
 
         flex-shrink: 0;
 
-        border: 1px solid var(--border);
-        border-radius: 10px;
+        visibility: visible !important;
+        opacity: 1 !important;
 
         background: var(--white);
         color: var(--black);
 
-        font-size: 22px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
 
-        visibility: visible !important;
-        opacity: 1 !important;
+        font-size: 22px;
     }
 
+    /* MOBILE NAV */
     .main-nav {
+        position: fixed;
+
         top: 80px;
         left: 15px;
         right: 15px;
 
-        width: auto;
+        padding: 25px 20px;
+
+        display: none;
+
+        flex-direction: column;
+
+        gap: 20px;
 
         z-index: 9999;
     }
 
+    .main-nav.open {
+        display: flex;
+    }
 }
 
 
 /* =========================================================
-   SMALL MOBILE
+   SMALL PHONES
 ========================================================= */
 
 @media (max-width: 600px) {
 
     .header-inner {
         min-height: 72px;
+
         gap: 8px;
     }
 
+    /* LOGO */
     .logo {
-        font-size: 19px;
-        gap: 8px;
-        min-width: 0;
+        font-size: 18px;
+
+        gap: 7px;
+
+        flex: 1;
     }
 
     .logo-icon {
@@ -2097,15 +2149,18 @@ button,
         height: 36px;
 
         min-width: 36px;
-        flex-shrink: 0;
 
         font-size: 18px;
     }
 
+    /* ALL ACTIONS STAY TOGETHER */
     .header-actions {
-        gap: 6px;
+        gap: 5px;
+
+        margin-left: auto;
     }
 
+    /* THEME */
     .theme-toggle {
         width: 40px;
         height: 40px;
@@ -2113,49 +2168,45 @@ button,
         min-width: 40px;
     }
 
+    /* ORDER */
     .order-button {
-        width: 42px;
-        min-width: 42px;
-        height: 42px;
+        width: 92px;
+        min-width: 92px;
 
-        padding: 0;
+        height: 40px;
 
-        justify-content: center;
+        padding: 0 10px;
+
+        gap: 6px;
     }
 
     .order-button span {
-        display: none;
+        display: inline;
+
+        font-size: 12px;
     }
 
     .order-button i {
-        font-size: 18px;
+        font-size: 17px;
     }
 
+    /* HAMBURGER */
     .menu-toggle {
-        width: 42px !important;
-        height: 42px !important;
+        width: 40px !important;
+        height: 40px !important;
 
-        min-width: 42px;
+        min-width: 40px;
 
-        display: flex !important;
-
-        visibility: visible !important;
-        opacity: 1 !important;
+        font-size: 21px;
     }
 
+    /* MOBILE MENU */
     .main-nav {
         top: 72px;
 
-        left: 15px;
-        right: 15px;
-
-        padding: 25px 20px;
-
-        gap: 20px;
-
-        z-index: 9999;
+        left: 12px;
+        right: 12px;
     }
-
 }
 
 
@@ -2163,30 +2214,53 @@ button,
    VERY SMALL PHONES
 ========================================================= */
 
-@media (max-width: 400px) {
+@media (max-width: 380px) {
 
     .logo {
-        font-size: 17px;
+        font-size: 16px;
     }
 
     .logo-icon {
-        width: 34px;
-        height: 34px;
+        width: 33px;
+        height: 33px;
 
-        min-width: 34px;
-    }
-
-    .theme-toggle,
-    .order-button,
-    .menu-toggle {
-        width: 38px !important;
-        height: 38px !important;
-
-        min-width: 38px;
+        min-width: 33px;
     }
 
     .header-actions {
         gap: 4px;
     }
 
+    .theme-toggle {
+        width: 37px;
+        height: 37px;
+
+        min-width: 37px;
+    }
+
+    .order-button {
+        width: 82px;
+        min-width: 82px;
+
+        height: 37px;
+
+        padding: 0 7px;
+    }
+
+    .order-button span {
+        font-size: 11px;
+    }
+
+    .order-button i {
+        font-size: 15px;
+    }
+
+    .menu-toggle {
+        width: 37px !important;
+        height: 37px !important;
+
+        min-width: 37px;
+
+        font-size: 19px;
+    }
 }
