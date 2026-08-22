@@ -2264,3 +2264,43 @@ button,
         font-size: 19px;
     }
 }
+
+
+
+/* =========================================================
+   FULL WIDTH MOBILE SCREEN
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Header should touch both edges */
+    .site-header .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    /* Full-width sections */
+    .hero,
+    .products-section,
+    .why-section,
+    .about-section,
+    .order-cta,
+    .footer {
+        width: 100%;
+    }
+
+    /* Prevent horizontal overflow */
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+}
