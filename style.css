@@ -2460,3 +2460,119 @@ button,
         font-size: 18px;
     }
 }
+
+
+
+/* =========================================================
+   MEDIUM ORDER DRAWER
+========================================================= */
+
+.order-drawer {
+    width: 420px;
+    max-width: 92vw;
+}
+
+/* Order header */
+.order-header {
+    padding: 22px 25px;
+}
+
+.order-header h3 {
+    font-size: 23px;
+}
+
+/* Order items area */
+.order-items {
+    padding: 10px 25px;
+}
+
+/* Selected products */
+.selected-item {
+    grid-template-columns: 55px 1fr auto;
+
+    gap: 12px;
+
+    padding: 16px 0;
+}
+
+.selected-image {
+    width: 55px;
+    height: 55px;
+}
+
+.selected-info h4 {
+    font-size: 15px;
+}
+
+.selected-info strong {
+    font-size: 13px;
+}
+
+/* =========================================================
+   WHATSAPP BUTTON INSIDE ORDER DRAWER
+========================================================= */
+
+.whatsapp-order {
+    min-height: 48px;
+
+    margin: 0 25px;
+
+    width: calc(100% - 50px);
+
+    border-radius: 10px;
+
+    font-size: 14px;
+}
+
+.whatsapp-order i {
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   MOBILE ORDER DRAWER
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .order-drawer {
+        width: 90%;
+        max-width: 90%;
+    }
+
+    .order-header {
+        padding: 20px;
+    }
+
+    .order-header h3 {
+        font-size: 21px;
+    }
+
+    .order-items {
+        padding: 8px 20px;
+    }
+
+    .selected-item {
+        grid-template-columns: 50px 1fr auto;
+
+        gap: 10px;
+
+        padding: 14px 0;
+    }
+
+    .selected-image {
+        width: 50px;
+        height: 50px;
+    }
+
+    .whatsapp-order {
+        width: calc(100% - 40px);
+
+        margin: 0 20px;
+
+        min-height: 46px;
+
+        font-size: 13px;
+    }
+
+}
