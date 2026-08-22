@@ -78,6 +78,8 @@ themeToggle.addEventListener("click", () => {
 const WHATSAPP_NUMBERS = [
 
     "2348032934663"
+   "2347035850506"
+
 
     // Add more REAL numbers below:
 
